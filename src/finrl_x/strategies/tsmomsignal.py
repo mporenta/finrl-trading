@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 from typing import Dict, Optional, Iterable
-from strategies.strategylogger import StrategyLogger
-from strategies.base_signal import BaseSignalEngine
+from finrl_x.strategies.strategylogger import StrategyLogger
+from finrl_x.strategies.base_signal import BaseSignalEngine
 class TSMOMSignalEngine(BaseSignalEngine):
     """
     TS-MOM (Moskowitz et al., 2012)

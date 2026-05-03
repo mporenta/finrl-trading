@@ -64,8 +64,8 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 print(f"project_root: {project_root}")
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, 'src'))
-from src.strategies.base_strategy import BaseStrategy, StrategyConfig, StrategyResult
-from src.data.data_fetcher import fetch_sp500_tickers, fetch_fundamental_data
+from finrl_x.strategies.base_strategy import BaseStrategy, StrategyConfig, StrategyResult
+from finrl_x.data.data_fetcher import fetch_sp500_tickers, fetch_fundamental_data
 
 logger = logging.getLogger(__name__)
 

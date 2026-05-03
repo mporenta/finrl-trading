@@ -18,9 +18,9 @@ print(f"project_root: {project_root}")
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, 'src'))
 
-from src.config.settings import get_config
-from src.data.data_fetcher import fetch_price_data  # Assuming this is the fetcher class
-from src.trading.alpaca_manager import AlpacaManager, create_alpaca_account_from_env, create_multiple_accounts_from_config
+from finrl_x.config.settings import get_config
+from finrl_x.data.data_fetcher import fetch_price_data  # Assuming this is the fetcher class
+from finrl_x.trading.alpaca_manager import AlpacaManager, create_alpaca_account_from_env, create_multiple_accounts_from_config
 import numpy as np
 
 logger = logging.getLogger(__name__)

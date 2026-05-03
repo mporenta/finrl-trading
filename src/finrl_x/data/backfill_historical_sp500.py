@@ -23,8 +23,8 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
     sys.path.insert(0, os.path.join(project_root, "src"))
 
-from data.data_fetcher import fetch_fundamental_data, get_all_historical_sp500_tickers
-from data.data_store import get_data_store
+from finrl_x.data.data_fetcher import fetch_fundamental_data, get_all_historical_sp500_tickers
+from finrl_x.data.data_store import get_data_store
 
 DB_PATH = os.path.join(project_root, "data", "finrl_trading.db")
 CSV_PATH = os.path.join(project_root, "data", "sp500_historical_constituents.csv")
@@ -179,7 +179,7 @@ def fill_tradedate_and_prices(conn: sqlite3.Connection):
 
     # Get FMP API key
     try:
-        from src.config.settings import get_config
+        from finrl_x.config.settings import get_config
         config = get_config()
         api_key = config.fmp.api_key.get_secret_value()
     except Exception as e:

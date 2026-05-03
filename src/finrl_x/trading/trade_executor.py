@@ -31,7 +31,7 @@ try:
 except ImportError:
     # Fallback for direct module testing
     from alpaca_manager import AlpacaManager, OrderRequest, OrderResponse
-    from strategies.base_strategy import BaseStrategy, StrategyResult
+    from finrl_x.strategies.base_strategy import BaseStrategy, StrategyResult
 
 logger = logging.getLogger(__name__)
 
@@ -450,7 +450,7 @@ class TradeExecutor:
 # Utility functions
 def create_trade_executor_from_env() -> TradeExecutor:
     """Create trade executor from environment variables."""
-    from src.trading.alpaca_manager import create_alpaca_account_from_env
+    from finrl_x.trading.alpaca_manager import create_alpaca_account_from_env
 
     account = create_alpaca_account_from_env()
     alpaca_manager = AlpacaManager([account])

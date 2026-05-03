@@ -32,7 +32,7 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 print(f"project_root: {project_root}")
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, 'src'))
-from src.data.data_fetcher import fetch_price_data
+from finrl_x.data.data_fetcher import fetch_price_data
 
 
 

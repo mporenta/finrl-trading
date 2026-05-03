@@ -273,22 +273,22 @@ FMP_API_KEY=your_fmp_key
 
 ```python
 # Data
-from src.data.data_fetcher import get_data_manager
+from finrl_x.data.data_fetcher import get_data_manager
 manager = get_data_manager()
 prices = manager.get_price_data(['AAPL', 'MSFT'], '2020-01-01', '2024-12-31')
 
 # Strategy
-from src.strategies.ml_strategy import MLStockSelectorStrategy
+from finrl_x.strategies.ml_strategy import MLStockSelectorStrategy
 strategy = MLStockSelectorStrategy(config)
 result = strategy.generate_weights(data)
 
 # Backtest
-from src.backtest.backtest_engine import BacktestEngine, BacktestConfig
+from finrl_x.backtest.backtest_engine import BacktestEngine, BacktestConfig
 engine = BacktestEngine(BacktestConfig(start_date='2020-01-01', end_date='2024-12-31'))
 result = engine.run_backtest("My Strategy", weights, prices)
 
 # Live trade
-from src.trading.alpaca_manager import create_alpaca_account_from_env, AlpacaManager
+from finrl_x.trading.alpaca_manager import create_alpaca_account_from_env, AlpacaManager
 alpaca = AlpacaManager([create_alpaca_account_from_env()])
 alpaca.execute_portfolio_rebalance(target_weights={'AAPL': 0.3, 'MSFT': 0.7})
 ```
@@ -350,7 +350,7 @@ git push origin feature/your-feature
 Adding a custom strategy:
 
 ```python
-from src.strategies.base_strategy import BaseStrategy, StrategyConfig, StrategyResult
+from finrl_x.strategies.base_strategy import BaseStrategy, StrategyConfig, StrategyResult
 
 class MyStrategy(BaseStrategy):
     def generate_weights(self, data, **kwargs) -> StrategyResult:

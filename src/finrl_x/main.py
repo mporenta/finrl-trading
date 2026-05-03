@@ -11,11 +11,11 @@ import logging
 import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add src to path so `import finrl_x.*` works when running this file directly
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config.settings import get_config
-from utils.logging_utils import setup_logging
+from finrl_x.config.settings import get_config
+from finrl_x.utils.logging_utils import setup_logging
 
 
 def setup_parser():
@@ -71,19 +71,19 @@ def main():
 
     try:
         if args.command == 'dashboard':
-            from web.app import main as dashboard_main
+            from finrl_x.web.app import main as dashboard_main
             dashboard_main()
 
         elif args.command == 'backtest':
-            from backtest.backtest_engine import main as backtest_main
+            from finrl_x.backtest.backtest_engine import main as backtest_main
             backtest_main()
 
         elif args.command == 'trade':
-            from trading.trade_executor import main as trade_main
+            from finrl_x.trading.trade_executor import main as trade_main
             trade_main()
 
         elif args.command == 'data':
-            from data.data_processor import main as data_main
+            from finrl_x.data.data_processor import main as data_main
             data_main()
 
         elif args.command == 'config':

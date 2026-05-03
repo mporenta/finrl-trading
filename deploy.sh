@@ -365,9 +365,9 @@ sys.path.insert(0, str(project_root))
 # ── 3a: Generate target weights ──────────────────────
 print(f"\n--- Step 3a: Generating signal for {as_of_date} ---\n")
 
-from src.strategies.adaptive_rotation import AdaptiveRotationEngine
-from src.strategies.adaptive_rotation.data_preprocessor import DataPreprocessor
-from src.strategies.adaptive_rotation.config_loader import load_config
+from finrl_x.strategies.adaptive_rotation import AdaptiveRotationEngine
+from finrl_x.strategies.adaptive_rotation.data_preprocessor import DataPreprocessor
+from finrl_x.strategies.adaptive_rotation.config_loader import load_config
 
 config = load_config(config_path)
 preprocessor = DataPreprocessor(config)
@@ -416,7 +416,7 @@ print(f"\n  Signal saved to: {signal_file}")
 # ── 3b: Execute on Alpaca paper trading ──────────────
 print(f"\n--- Step 3b: {'[DRY RUN] ' if dry_run else ''}Executing on Alpaca Paper Trading ---\n")
 
-from src.trading.alpaca_manager import AlpacaManager, create_alpaca_account_from_env
+from finrl_x.trading.alpaca_manager import AlpacaManager, create_alpaca_account_from_env
 
 if account_name:
     account = create_alpaca_account_from_env(account_name)
