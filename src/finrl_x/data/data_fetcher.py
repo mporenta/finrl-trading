@@ -74,7 +74,7 @@ class BaseDataFetcher(ABC):
             cache_dir: Deprecated, kept for backward compatibility. Uses DATA_BASE_DIR env var instead.
         """
         # Import here to avoid circular dependency
-        from src.data.data_store import get_data_store
+        from finrl_x.data.data_store import get_data_store
         self.data_store = get_data_store(base_dir=cache_dir)
 
     def _standardize_fundamental_data(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -178,7 +178,7 @@ class FMPFetcher(BaseDataFetcher, DataSource):
     def _get_api_key(self) -> Optional[str]:
         """Get FMP API key from config."""
         try:
-            from src.config.settings import get_config
+            from finrl_x.config.settings import get_config
             config = get_config()
             if config.fmp.api_key:
                 return config.fmp.api_key.get_secret_value()
@@ -190,7 +190,7 @@ class FMPFetcher(BaseDataFetcher, DataSource):
     def _init_sentiment_settings(self) -> None:
         """Load GPT sentiment analysis configuration."""
         try:
-            from src.config.settings import get_config
+            from finrl_x.config.settings import get_config
             config = get_config()
             openai_cfg = getattr(config, 'openai', None)
             if openai_cfg and openai_cfg.api_key:

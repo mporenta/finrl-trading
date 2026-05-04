@@ -526,11 +526,11 @@ def main():
     if args.universe:
         if args.universe.lower() == "nasdaq100":
             import sys as _sys; _sys.path.insert(0, os.path.join(project_root, "src"))
-            from data.data_fetcher import fetch_nasdaq100_tickers
+            from finrl_x.data.data_fetcher import fetch_nasdaq100_tickers
             univ = fetch_nasdaq100_tickers()
             univ_tickers = set(univ["tickers"].tolist())
         elif args.universe.lower() == "sp500":
-            from data.data_fetcher import fetch_sp500_tickers
+            from finrl_x.data.data_fetcher import fetch_sp500_tickers
             univ = fetch_sp500_tickers()
             univ_tickers = set(univ["tickers"].tolist())
         elif os.path.exists(args.universe):
@@ -673,10 +673,10 @@ def main():
     # instead of only future quarter dates. This gives ~500 stocks to rank.
     if args.latest_snapshot:
         if universe_name == "nasdaq100":
-            from data.data_fetcher import fetch_nasdaq100_tickers
+            from finrl_x.data.data_fetcher import fetch_nasdaq100_tickers
             univ_snap = fetch_nasdaq100_tickers()
         else:
-            from data.data_fetcher import fetch_sp500_tickers
+            from finrl_x.data.data_fetcher import fetch_sp500_tickers
             univ_snap = fetch_sp500_tickers()
         univ_tickers = set(univ_snap["tickers"].tolist()) if univ_snap is not None else set()
         print(f"\nLatest-snapshot mode: {len(univ_tickers)} current {universe_name.upper()} tickers")
@@ -701,7 +701,7 @@ def main():
             snapshot_df = pd.DataFrame(latest_rows)
             # Download actual returns: price on ref_date -> end_date via FMP
             import requests
-            from data.data_fetcher import FMPFetcher
+            from finrl_x.data.data_fetcher import FMPFetcher
             fmp = FMPFetcher()
             all_tickers_list = list(snapshot_df["tic"].unique())
             dl_start = (ref_date - pd.Timedelta(days=7)).strftime("%Y-%m-%d")
@@ -773,10 +773,10 @@ def main():
             # No historical CSV — fall back to current members from API
             print(f"  No historical CSV for {universe_name.upper()}, fetching current members from API...")
             if universe_name == "nasdaq100":
-                from data.data_fetcher import fetch_nasdaq100_tickers
+                from finrl_x.data.data_fetcher import fetch_nasdaq100_tickers
                 _mv_snap = fetch_nasdaq100_tickers()
             else:
-                from data.data_fetcher import fetch_sp500_tickers
+                from finrl_x.data.data_fetcher import fetch_sp500_tickers
                 _mv_snap = fetch_sp500_tickers()
             latest_members = set(_mv_snap["tickers"].tolist()) if _mv_snap is not None else set()
 

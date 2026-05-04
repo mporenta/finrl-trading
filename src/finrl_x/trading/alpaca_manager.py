@@ -547,7 +547,7 @@ class AlpacaManager:
                 current_weights[symbol] = (market_value / portfolio_value) if portfolio_value > 0 else 0.0
 
         # Phase 2: build BUY orders with buying power scaling and rounding
-        from src.config.settings import get_config
+        from finrl_x.config.settings import get_config
         cfg = get_config()
         min_notional = float(getattr(cfg.trading, 'min_order_size', 100.0))
 
@@ -880,7 +880,7 @@ def create_alpaca_account_from_env(name: str = "default") -> AlpacaAccount:
         AlpacaAccount instance
     """
 
-    from src.config.settings import get_config
+    from finrl_x.config.settings import get_config
     config = get_config()
     api_key = config.alpaca.api_key
     api_secret = config.alpaca.api_secret

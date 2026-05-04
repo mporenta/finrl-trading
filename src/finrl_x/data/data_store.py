@@ -22,7 +22,7 @@ import os
 import pandas as pd
 import numpy as np
 
-from src.data.trading_calendar import (
+from finrl_x.data.trading_calendar import (
     get_missing_trading_days,
     consolidate_date_ranges,
     get_trading_days_set,
@@ -49,7 +49,7 @@ class DataStore:
         # Use config settings if base_dir not provided
         if base_dir is None:
             try:
-                from src.config.settings import get_config
+                from finrl_x.config.settings import get_config
                 config = get_config()
                 base_dir = config.data.base_dir
             except Exception as e:
@@ -1084,7 +1084,7 @@ def get_data_store(base_dir: str = None) -> DataStore:
     """
     global _data_store, _data_store_config
 
-    from src.config.settings import get_config
+    from finrl_x.config.settings import get_config
     config = get_config()
     if base_dir is None:
         base_dir = config.data.base_dir

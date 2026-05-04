@@ -26,9 +26,9 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, "src"))
 
-from src.data.data_fetcher import fetch_fundamental_data, fetch_sp500_tickers
-#from src.strategies.base_strategy import StrategyConfig
-from src.strategies.ml_strategy import MLStockSelectionStrategy
+from finrl_x.data.data_fetcher import fetch_fundamental_data, fetch_sp500_tickers
+#from finrl_x.strategies.base_strategy import StrategyConfig
+from finrl_x.strategies.ml_strategy import MLStockSelectionStrategy
 
 
 BUCKET_ORDER = ["growth_tech", "real_assets", "defensive"]

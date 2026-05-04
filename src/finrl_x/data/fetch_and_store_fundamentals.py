@@ -12,11 +12,11 @@ if project_root not in sys.path:
     sys.path.insert(0, os.path.join(project_root, "src"))
 
 import pandas as pd
-from data.data_fetcher import (
+from finrl_x.data.data_fetcher import (
     fetch_fundamental_data, fetch_sp500_tickers, fetch_nasdaq100_tickers,
     get_all_historical_sp500_tickers,
 )
-from data.data_store import get_data_store
+from finrl_x.data.data_store import get_data_store
 
 
 def main():

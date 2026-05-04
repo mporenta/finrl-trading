@@ -23,8 +23,8 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.strategies.adaptive_rotation import AdaptiveRotationEngine
-from src.strategies.adaptive_rotation.data_preprocessor import DataPreprocessor
+from finrl_x.strategies.adaptive_rotation import AdaptiveRotationEngine
+from finrl_x.strategies.adaptive_rotation.data_preprocessor import DataPreprocessor
 
 
 def run_single_date(config_path: str, as_of_date: str, data_dir: str = None):
@@ -44,7 +44,7 @@ def run_single_date(config_path: str, as_of_date: str, data_dir: str = None):
     
     # 1. Load data first
     print("1. Loading and preprocessing data...")
-    from src.strategies.adaptive_rotation.config_loader import load_config
+    from finrl_x.strategies.adaptive_rotation.config_loader import load_config
     config = load_config(config_path)
     preprocessor = DataPreprocessor(config)
     preprocessor.load_and_prepare(data_dir=data_dir)
@@ -118,7 +118,7 @@ def run_backtest(config_path: str, start_date: str, end_date: str,
     
     # 1. Load data first
     print("1. Loading and preprocessing data...")
-    from src.strategies.adaptive_rotation.config_loader import load_config
+    from finrl_x.strategies.adaptive_rotation.config_loader import load_config
     config = load_config(config_path)
     preprocessor = DataPreprocessor(config)
     preprocessor.load_and_prepare(data_dir=data_dir)
@@ -177,7 +177,7 @@ def run_backtest(config_path: str, start_date: str, end_date: str,
             
             # Priority 2: Fast Risk-Off (only if not weekly)
             elif daily_fast_track:
-                from src.strategies.adaptive_rotation.market_regime import check_fast_risk_off_trigger
+                from finrl_x.strategies.adaptive_rotation.market_regime import check_fast_risk_off_trigger
                 
                 should_trigger_fast, signals = check_fast_risk_off_trigger(
                     daily_prices.get('^GSPC'),
@@ -244,7 +244,7 @@ def run_backtest(config_path: str, start_date: str, end_date: str,
                         price_series = price_data[symbol]
                         current_price = float(price_series.iloc[-1])
                         
-                        from src.strategies.adaptive_rotation.risk_manager import PositionState
+                        from finrl_x.strategies.adaptive_rotation.risk_manager import PositionState
                         current_positions[symbol] = PositionState(
                             symbol=symbol,
                             entry_date=date,

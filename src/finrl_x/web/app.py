@@ -29,14 +29,14 @@ try:
     from ..utils.logging_utils import setup_logging
 except ImportError:
     # Fallback for direct module testing
-    from config.settings import get_config
-    from data.data_store import get_data_store
-    from strategies.base_strategy import create_strategy, StrategyConfig
-    from backtest.backtest_engine import BacktestEngine, BacktestConfig
-    from trading.alpaca_manager import create_alpaca_account_from_env
-    from trading.trade_executor import TradeExecutor, ExecutionConfig
+    from finrl_x.config.settings import get_config
+    from finrl_x.data.data_store import get_data_store
+    from finrl_x.strategies.base_strategy import create_strategy, StrategyConfig
+    from finrl_x.backtest.backtest_engine import BacktestEngine, BacktestConfig
+    from finrl_x.trading.alpaca_manager import create_alpaca_account_from_env
+    from finrl_x.trading.trade_executor import TradeExecutor, ExecutionConfig
     try:
-        from utils.logging_utils import setup_logging
+        from finrl_x.utils.logging_utils import setup_logging
     except ImportError:
         setup_logging = None
 

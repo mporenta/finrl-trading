@@ -4,9 +4,9 @@ import pandas_market_calendars as mcal
 import pandas as pd
 import random 
 import numpy as np
-from strategies.strategylogger import StrategyLogger
-from strategies.universe_manager import UniverseManager
-from strategies.base_signal import BaseSignalEngine
+from finrl_x.strategies.strategylogger import StrategyLogger
+from finrl_x.strategies.universe_manager import UniverseManager
+from finrl_x.strategies.base_signal import BaseSignalEngine
 class ExecutionManager:
     def __init__(
         self,
